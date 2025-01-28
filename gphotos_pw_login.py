@@ -9,7 +9,7 @@ def manual_authentication(session_file):
         page.set_user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
 
         # Navigate to Google Photos login page
-        page.goto("https://photos.google.com")
+        page.goto("https://photos.google.com/login")
 
         # Wait for the user to complete all authentication steps
         print("Please log in to your Google account and complete any authentication steps in the browser.")
