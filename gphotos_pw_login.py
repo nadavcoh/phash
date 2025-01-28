@@ -5,6 +5,9 @@ def manual_authentication(session_file):
         browser = p.chromium.launch(headless=False)
         page = browser.new_page()
 
+        # Set a custom user agent
+        page.set_user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+
         # Navigate to Google Photos login page
         page.goto("https://photos.google.com")
 
