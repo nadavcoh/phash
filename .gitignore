@@ -6,3 +6,307 @@
 /photoslibrary_v1.token
 /token.json
 /venv
+downloaded_files/driver_fixing.lock
+downloaded_files/pyautogui.lock
+session/ChromeFeatureState
+session/first_party_sets.db
+session/first_party_sets.db-journal
+session/Last Version
+session/Local State
+session/RunningChromeVersion
+session/SingletonCookie
+session/SingletonLock
+session/SingletonSocket
+session/Variations
+session/Default/Affiliation Database
+session/Default/Affiliation Database-journal
+session/Default/BrowsingTopicsSiteData
+session/Default/BrowsingTopicsSiteData-journal
+session/Default/BrowsingTopicsState
+session/Default/Cookies
+session/Default/Cookies-journal
+session/Default/DIPS
+session/Default/DIPS-journal
+session/Default/Favicons
+session/Default/Favicons-journal
+session/Default/heavy_ad_intervention_opt_out.db
+session/Default/heavy_ad_intervention_opt_out.db-journal
+session/Default/History
+session/Default/History-journal
+session/Default/LOCK
+session/Default/LOG
+session/Default/LOG.old
+session/Default/Login Data
+session/Default/Login Data For Account
+session/Default/Login Data For Account-journal
+session/Default/Login Data-journal
+session/Default/Network Action Predictor
+session/Default/Network Action Predictor-journal
+session/Default/Network Persistent State
+session/Default/Preferences
+session/Default/PreferredApps
+session/Default/README
+session/Default/Reporting and NEL
+session/Default/Reporting and NEL-journal
+session/Default/Safe Browsing Cookies
+session/Default/Safe Browsing Cookies-journal
+session/Default/SCT Auditing Pending Reports
+session/Default/Secure Preferences
+session/Default/SharedStorage
+session/Default/SharedStorage-wal
+session/Default/Shortcuts
+session/Default/Shortcuts-journal
+session/Default/Top Sites
+session/Default/Top Sites-journal
+session/Default/TransportSecurity
+session/Default/Trust Tokens
+session/Default/Trust Tokens-journal
+session/Default/trusted_vault.pb
+session/Default/Visited Links
+session/Default/Web Data
+session/Default/Web Data-journal
+session/Default/AutofillStrikeDatabase/LOCK
+session/Default/AutofillStrikeDatabase/LOG
+session/Default/AutofillStrikeDatabase/LOG.old
+session/Default/BudgetDatabase/LOCK
+session/Default/BudgetDatabase/LOG
+session/Default/BudgetDatabase/LOG.old
+session/Default/Cache/Cache_Data/0bbdf0edd12f40d5_0
+session/Default/Cache/Cache_Data/1d2f7190308333ca_0
+session/Default/Cache/Cache_Data/1d9e232970de0469_0
+session/Default/Cache/Cache_Data/2c6f58ed9aee543c_0
+session/Default/Cache/Cache_Data/2c6f58ed9aee543c_s
+session/Default/Cache/Cache_Data/3d7fbe4404779f20_0
+session/Default/Cache/Cache_Data/3dc1a6386469d54c_0
+session/Default/Cache/Cache_Data/4d6098bd2826675a_0
+session/Default/Cache/Cache_Data/4f4a12d6db71ace3_0
+session/Default/Cache/Cache_Data/4f4a12d6db71ace3_s
+session/Default/Cache/Cache_Data/4f66fe8dbfd2a9ab_0
+session/Default/Cache/Cache_Data/5ae46f28cf58c8cc_0
+session/Default/Cache/Cache_Data/5e37e9fbe3f1bcca_0
+session/Default/Cache/Cache_Data/6a96b5f8e3bccf19_0
+session/Default/Cache/Cache_Data/6f28a18c47722fee_0
+session/Default/Cache/Cache_Data/7e0619bcabacf1a7_0
+session/Default/Cache/Cache_Data/8bcbac14496734f1_0
+session/Default/Cache/Cache_Data/8d3e9b398b3ec728_0
+session/Default/Cache/Cache_Data/8fd6d0fdb67a1c91_0
+session/Default/Cache/Cache_Data/9bcd3d29b3857759_0
+session/Default/Cache/Cache_Data/9d5d159302805759_0
+session/Default/Cache/Cache_Data/9ea2404ee4c95a5c_0
+session/Default/Cache/Cache_Data/9ea2404ee4c95a5c_s
+session/Default/Cache/Cache_Data/17c9fa2c53d1ce12_0
+session/Default/Cache/Cache_Data/17c9fa2c53d1ce12_s
+session/Default/Cache/Cache_Data/28a1b4d856d0d20a_0
+session/Default/Cache/Cache_Data/29be39fcb112e244_0
+session/Default/Cache/Cache_Data/46d74931b00b6ffc_0
+session/Default/Cache/Cache_Data/46d74931b00b6ffc_s
+session/Default/Cache/Cache_Data/57b2b097be73ba79_0
+session/Default/Cache/Cache_Data/71c9a8b4572521db_0
+session/Default/Cache/Cache_Data/74db983535111528_0
+session/Default/Cache/Cache_Data/74db983535111528_s
+session/Default/Cache/Cache_Data/81c39ec2668288eb_0
+session/Default/Cache/Cache_Data/89dc7c309aa50139_0
+session/Default/Cache/Cache_Data/91c6baae5218e8fe_0
+session/Default/Cache/Cache_Data/97c4cff67a71bff9_0
+session/Default/Cache/Cache_Data/142e3aadd5813fe8_0
+session/Default/Cache/Cache_Data/206e1fccfad3d9ce_0
+session/Default/Cache/Cache_Data/601a10ddfbb9c2de_0
+session/Default/Cache/Cache_Data/610dfcd403965703_0
+session/Default/Cache/Cache_Data/672b757b311c5f05_0
+session/Default/Cache/Cache_Data/751ce9853e5de28a_0
+session/Default/Cache/Cache_Data/769e509d0c3e9d09_0
+session/Default/Cache/Cache_Data/785c834b3599e085_0
+session/Default/Cache/Cache_Data/856de84a49bf2fcf_0
+session/Default/Cache/Cache_Data/966e55b5a46f8302_0
+session/Default/Cache/Cache_Data/2586f0b38ba094aa_0
+session/Default/Cache/Cache_Data/3004c039d3341dd8_0
+session/Default/Cache/Cache_Data/7484bd5e72a86a57_0
+session/Default/Cache/Cache_Data/7484bd5e72a86a57_s
+session/Default/Cache/Cache_Data/19975ec192a611d1_0
+session/Default/Cache/Cache_Data/53788cbcbb358a6f_0
+session/Default/Cache/Cache_Data/306070ad4d33c510_0
+session/Default/Cache/Cache_Data/87404010fe46a7c0_0
+session/Default/Cache/Cache_Data/a263e591426edd37_0
+session/Default/Cache/Cache_Data/a073690fb41b9f16_0
+session/Default/Cache/Cache_Data/a506099095741964_0
+session/Default/Cache/Cache_Data/b0e732ae99514804_0
+session/Default/Cache/Cache_Data/b6c36e5c7dcf2cfd_0
+session/Default/Cache/Cache_Data/b81c6806b4f5db62_0
+session/Default/Cache/Cache_Data/bb899b4bbd43065e_0
+session/Default/Cache/Cache_Data/cc2b339c9ef2427a_0
+session/Default/Cache/Cache_Data/d4c29e778d7f5dae_0
+session/Default/Cache/Cache_Data/d6cc05fb96b6987d_0
+session/Default/Cache/Cache_Data/d352d74abbec7aa5_0
+session/Default/Cache/Cache_Data/e2038d9e4119ca64_0
+session/Default/Cache/Cache_Data/ead1c18eafa52333_0
+session/Default/Cache/Cache_Data/ed3304293c8ea3fc_0
+session/Default/Cache/Cache_Data/eebd7b6b759b9bd8_0
+session/Default/Cache/Cache_Data/f9e1d7d191b04783_0
+session/Default/Cache/Cache_Data/f494a9f729fdf73d_0
+session/Default/Cache/Cache_Data/f536d18bbc6028a2_0
+session/Default/Cache/Cache_Data/fa077327712a3644_0
+session/Default/Cache/Cache_Data/faf42928472f54f2_0
+session/Default/Cache/Cache_Data/index
+session/Default/Cache/Cache_Data/index-dir/the-real-index
+session/Default/ClientCertificates/LOCK
+session/Default/ClientCertificates/LOG
+session/Default/ClientCertificates/LOG.old
+session/Default/Code Cache/js/0c7ad37b8748e93e_0
+session/Default/Code Cache/js/2bbf1a706428f7a8_0
+session/Default/Code Cache/js/4ef40c257d3eae1b_0
+session/Default/Code Cache/js/5ceb3afccd4f6ce4_0
+session/Default/Code Cache/js/8d9636e011628039_0
+session/Default/Code Cache/js/42f5b98676a1a5e5_0
+session/Default/Code Cache/js/54df6c7ec29df190_0
+session/Default/Code Cache/js/65e3251c07aeabe0_0
+session/Default/Code Cache/js/85dc1992def589e8_0
+session/Default/Code Cache/js/308b9f59806951fa_0
+session/Default/Code Cache/js/1796c72c63824562_0
+session/Default/Code Cache/js/89489eede66be795_0
+session/Default/Code Cache/js/869704ea72349538_0
+session/Default/Code Cache/js/b2658b1f02637c50_0
+session/Default/Code Cache/js/ba983c713b7f040a_0
+session/Default/Code Cache/js/c6c2f225012375c9_0
+session/Default/Code Cache/js/ca355004d8a520ab_0
+session/Default/Code Cache/js/cd173e5a7db191dd_0
+session/Default/Code Cache/js/d312166d5d723ff5_0
+session/Default/Code Cache/js/d3482794aa136ba0_0
+session/Default/Code Cache/js/e951c73916f80f3c_0
+session/Default/Code Cache/js/index
+session/Default/Code Cache/js/index-dir/the-real-index
+session/Default/Code Cache/wasm/index
+session/Default/Code Cache/wasm/index-dir/the-real-index
+session/Default/DawnGraphiteCache/data_0
+session/Default/DawnGraphiteCache/data_1
+session/Default/DawnGraphiteCache/data_2
+session/Default/DawnGraphiteCache/data_3
+session/Default/DawnGraphiteCache/index
+session/Default/DawnWebGPUCache/data_0
+session/Default/DawnWebGPUCache/data_1
+session/Default/DawnWebGPUCache/data_2
+session/Default/DawnWebGPUCache/data_3
+session/Default/DawnWebGPUCache/index
+session/Default/Download Service/EntryDB/LOCK
+session/Default/Download Service/EntryDB/LOG
+session/Default/Download Service/EntryDB/LOG.old
+session/Default/Extension Rules/000003.log
+session/Default/Extension Rules/CURRENT
+session/Default/Extension Rules/LOCK
+session/Default/Extension Rules/LOG
+session/Default/Extension Rules/MANIFEST-000001
+session/Default/Extension Scripts/000003.log
+session/Default/Extension Scripts/CURRENT
+session/Default/Extension Scripts/LOCK
+session/Default/Extension Scripts/LOG
+session/Default/Extension Scripts/MANIFEST-000001
+session/Default/Extension State/000003.log
+session/Default/Extension State/CURRENT
+session/Default/Extension State/LOCK
+session/Default/Extension State/LOG
+session/Default/Extension State/LOG.old
+session/Default/Extension State/MANIFEST-000001
+session/Default/Feature Engagement Tracker/AvailabilityDB/LOCK
+session/Default/Feature Engagement Tracker/AvailabilityDB/LOG
+session/Default/Feature Engagement Tracker/AvailabilityDB/LOG.old
+session/Default/Feature Engagement Tracker/EventDB/LOCK
+session/Default/Feature Engagement Tracker/EventDB/LOG
+session/Default/Feature Engagement Tracker/EventDB/LOG.old
+session/Default/GCM Store/Encryption/000003.log
+session/Default/GCM Store/Encryption/CURRENT
+session/Default/GCM Store/Encryption/LOCK
+session/Default/GCM Store/Encryption/LOG
+session/Default/GCM Store/Encryption/LOG.old
+session/Default/GCM Store/Encryption/MANIFEST-000001
+session/Default/GPUCache/data_0
+session/Default/GPUCache/data_1
+session/Default/GPUCache/data_2
+session/Default/GPUCache/data_3
+session/Default/GPUCache/index
+session/Default/Local Storage/leveldb/000003.log
+session/Default/Local Storage/leveldb/CURRENT
+session/Default/Local Storage/leveldb/LOCK
+session/Default/Local Storage/leveldb/LOG
+session/Default/Local Storage/leveldb/LOG.old
+session/Default/Local Storage/leveldb/MANIFEST-000001
+session/Default/PersistentOriginTrials/LOCK
+session/Default/PersistentOriginTrials/LOG
+session/Default/PersistentOriginTrials/LOG.old
+session/Default/Segmentation Platform/SegmentInfoDB/LOCK
+session/Default/Segmentation Platform/SegmentInfoDB/LOG
+session/Default/Segmentation Platform/SegmentInfoDB/LOG.old
+session/Default/Segmentation Platform/SignalDB/LOCK
+session/Default/Segmentation Platform/SignalDB/LOG
+session/Default/Segmentation Platform/SignalDB/LOG.old
+session/Default/Segmentation Platform/SignalStorageConfigDB/LOCK
+session/Default/Segmentation Platform/SignalStorageConfigDB/LOG
+session/Default/Segmentation Platform/SignalStorageConfigDB/LOG.old
+session/Default/Session Storage/000003.log
+session/Default/Session Storage/CURRENT
+session/Default/Session Storage/LOCK
+session/Default/Session Storage/LOG
+session/Default/Session Storage/LOG.old
+session/Default/Session Storage/MANIFEST-000001
+session/Default/Sessions/Session_13382557962461813
+session/Default/Sessions/Session_13382558031274881
+session/Default/Sessions/Tabs_13382557963659402
+session/Default/Sessions/Tabs_13382558010670654
+session/Default/Shared Dictionary/db
+session/Default/Shared Dictionary/db-journal
+session/Default/Shared Dictionary/cache/index
+session/Default/Shared Dictionary/cache/index-dir/the-real-index
+session/Default/Site Characteristics Database/000003.log
+session/Default/Site Characteristics Database/CURRENT
+session/Default/Site Characteristics Database/LOCK
+session/Default/Site Characteristics Database/LOG
+session/Default/Site Characteristics Database/LOG.old
+session/Default/Site Characteristics Database/MANIFEST-000001
+session/Default/Sync Data/LevelDB/000003.log
+session/Default/Sync Data/LevelDB/CURRENT
+session/Default/Sync Data/LevelDB/LOCK
+session/Default/Sync Data/LevelDB/LOG
+session/Default/Sync Data/LevelDB/LOG.old
+session/Default/Sync Data/LevelDB/MANIFEST-000001
+session/Default/WebStorage/QuotaManager
+session/Default/WebStorage/QuotaManager-journal
+session/Default/commerce_subscription_db/LOCK
+session/Default/commerce_subscription_db/LOG
+session/Default/commerce_subscription_db/LOG.old
+session/Default/discounts_db/LOCK
+session/Default/discounts_db/LOG
+session/Default/discounts_db/LOG.old
+session/Default/optimization_guide_hint_cache_store/LOCK
+session/Default/optimization_guide_hint_cache_store/LOG
+session/Default/optimization_guide_hint_cache_store/LOG.old
+session/Default/parcel_tracking_db/LOCK
+session/Default/parcel_tracking_db/LOG
+session/Default/parcel_tracking_db/LOG.old
+session/Default/shared_proto_db/000003.log
+session/Default/shared_proto_db/CURRENT
+session/Default/shared_proto_db/LOCK
+session/Default/shared_proto_db/LOG
+session/Default/shared_proto_db/LOG.old
+session/Default/shared_proto_db/MANIFEST-000001
+session/Default/shared_proto_db/metadata/000003.log
+session/Default/shared_proto_db/metadata/CURRENT
+session/Default/shared_proto_db/metadata/LOCK
+session/Default/shared_proto_db/metadata/LOG
+session/Default/shared_proto_db/metadata/LOG.old
+session/Default/shared_proto_db/metadata/MANIFEST-000001
+session/GrShaderCache/data_0
+session/GrShaderCache/data_1
+session/GrShaderCache/data_2
+session/GrShaderCache/data_3
+session/GrShaderCache/index
+session/GraphiteDawnCache/data_0
+session/GraphiteDawnCache/data_1
+session/GraphiteDawnCache/data_2
+session/GraphiteDawnCache/data_3
+session/GraphiteDawnCache/index
+session/ShaderCache/data_0
+session/ShaderCache/data_1
+session/ShaderCache/data_2
+session/ShaderCache/data_3
+session/ShaderCache/index
+session/segmentation_platform/ukm_db
+session/segmentation_platform/ukm_db-journal
+session.json
