@@ -310,3 +310,8 @@ session/ShaderCache/index
 session/segmentation_platform/ukm_db
 session/segmentation_platform/ukm_db-journal
 session.json
+latest_logs/  File .line_1/basic_test_info.txt
+latest_logs/  File .line_1/page_source.html
+latest_logs/  File .line_1/screenshot.png
+__pycache__/gphoto_selenium.cpython-312-pytest-8.3.4.pyc
+__pycache__/gphoto_selenium.cpython-312.pyc
