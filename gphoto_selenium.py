@@ -4,13 +4,11 @@ from time import sleep
 
 import psycopg2
 import os
-from io import BytesIO
 from PIL import Image
 from pillow_heif import register_heif_opener
 import imagehash
 import json
 import zipfile
-import urllib.parse
 
 register_heif_opener()
 
@@ -22,9 +20,11 @@ def twos_complement(hexstr, bits):
             value -= 1 << bits
         return value
 
-def my_sb():
-    context = SB(uc=True)
-    sb = context.__enter__()
+def my_sb(sb=None):
+    context = None
+    if not sb:
+        context = SB(uc=True)
+        sb = context.__enter__()
 
     sb.open("https://photos.google.com/login")
     # Wait for the user to complete all authentication steps
@@ -101,5 +101,6 @@ def my_sb():
     return context, sb, conn, cursor
 
 if __name__ == '__main__':
-    context, sb, conn, cursor = my_sb()
-    context.__exit__(None, None, None)
+    with SB(uc=True) as sb:
+        context, sb, conn, cursor = my_sb(sb)
+    # context.__exit__(None, None, None)
