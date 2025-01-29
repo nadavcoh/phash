@@ -47,7 +47,7 @@ def my_sb(sb=None):
     
     cursor = conn.cursor()
     print("Connection Successful to PostgreSQL")
-    for i in range(1000):
+    for i in range(10000):
         print (i)
         url = sb.get_current_url()
         
