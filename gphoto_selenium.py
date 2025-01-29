@@ -20,6 +20,7 @@ def initialize_driver(session_file):
     
     for cookie in cookies:
         # Ensure the cookie domain matches the current domain
+        sb.add_cookie(cookie)
         cookie['domain'] = '.google.com'
         sb.add_cookie(cookie)
     
@@ -27,7 +28,7 @@ def initialize_driver(session_file):
 
     # Navigate to the photos page
     sb.open("https://photos.google.com/u/0/")
-
+    input("Press Enter after you have authenticated and navigated to the correct page.")
     sb.send_keys("html", Keys.ARROW_RIGHT)
     sb.send_keys("html", Keys.ENTER)
     sb.send_keys("html", "i")
