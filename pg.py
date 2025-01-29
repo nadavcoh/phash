@@ -31,6 +31,9 @@ with open("example.json") as f:
 # img = Image.open(imageBinary)
 # imgHash = str(imagehash.dhash(img))
 # hashInt = twos_complement(imgHash, 64) #convert from hexadecimal to 64 bit signed integer
-cursor.execute("INSERT INTO hashes(hash, url) VALUES (%s, %s)", (1, data["url"],))
+cursor.execute(
+    "INSERT INTO hashes(hash, url, preview_url, label, filename, size, filesize) VALUES (%s, %s, %s, %s, %s, %s, %s)",
+    (1, data["url"], data["preview_url"], data["label"], data["filename"], data["size"], data["filesize"])
+)
 conn.commit()
 print(f"added image to database")
