@@ -1,0 +1,5 @@
+seleniumbase
+psycopg2
+pillow
+pillow-heif
+imagehash
