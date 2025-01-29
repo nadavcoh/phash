@@ -83,7 +83,7 @@ def my_sb():
     conn.commit()
     print(f"added image to database")
     # print(url, preview_url, label, filename, size, filesize)
-    
+    sb.delete_downloaded_file_if_present(filename)
     return context, sb
 
 if __name__ == '__main__':
