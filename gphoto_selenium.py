@@ -31,7 +31,16 @@ def initialize_driver(session_file):
     sb.send_keys("html", Keys.ARROW_RIGHT)
     sb.send_keys("html", Keys.ENTER)
     sb.send_keys("html", "i")
-    print(sb.get_current_url())
+
+    url = sb.get_current_url()
+    preview_elements = sb.find_elements("img[aria-label^='Photo']")
+    preview_url = preview_elements[1].get_attribute('src')
+    label = preview_elements[1].get_attribute('aria-label')
+    filename = sb.find_elements("div[aria-label^='Filename']")[1].text
+    size = sb.find_elements("span[aria-label^='Size:']")[1].text
+ 
+    sb.send_keys("html", Keys.SHIFT + "d")
+    print(url, preview_url, label, filename, size)
     return context, sb
 
 if __name__ == '__main__':
