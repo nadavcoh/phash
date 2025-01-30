@@ -73,9 +73,68 @@ def my_sb(sb=None):
                 size = size_element.text
 
                 filesize_elements = sb.find_elements("span[aria-label^='File size:']")
-                filesize_element = [x for x in filesize_elements if x.is_displayed()][0]
-                filesize = filesize_element.text
+                displayed_filesize_elements = [x for x in filesize_elements if x.is_displayed()]
+                if displayed_filesize_elements:
+                    filesize_element = displayed_filesize_elements[0]
+                    filesize = filesize_element.text
+                else:
+                    filesize = None
+                    print("No file size found.")
+
+                camera_elements = sb.find_elements("div[aria-label^='Camera name:']")
+                displayed_camera_elements = [x for x in camera_elements if x.is_displayed()]
+                if displayed_camera_elements:
+                    camera_element = displayed_camera_elements[0]
+                    camera_name = camera_element.text
+                else:
+                    camera_name = None
+                    print("No camera name found.")
+
+                aperture_elements = sb.find_elements("div[aria-label^='Aperture:']")
+                displayed_aperture_elements = [x for x in aperture_elements if x.is_displayed()]
+                if displayed_aperture_elements:
+                    aperture_element = displayed_aperture_elements[0]
+                    aperture = aperture_element.text
+                else:
+                    aperture = None
+                    print("No aperture found.")
+
+                exposure_elements = sb.find_elements("div[aria-label^='Exposure time:']")
+                displayed_exposure_elements = [x for x in exposure_elements if x.is_displayed()]
+                if displayed_exposure_elements:
+                    exposure_element = displayed_exposure_elements[0]
+                    exposure = exposure_element.text
+                else:
+                    exposure = None
+                    print("No exposure time found.")
+
+                focal_length_elements = sb.find_elements("div[aria-label^='Focal length:']")
+                displayed_focal_length_elements = [x for x in focal_length_elements if x.is_displayed()]
+                if displayed_focal_length_elements:
+                    focal_length_element = displayed_focal_length_elements[0]
+                    focal_length = focal_length_element.text
+                else:
+                    focal_length = None
+                    print("No focal length found.")
+                
+                location_elements = sb.find_elements("a[title='Show location of photo on Google Maps']")
+                displayed_location_elements = [x for x in location_elements if x.is_displayed()]
+                if displayed_location_elements:
+                    location_element = displayed_location_elements[0]
+                    location = location_element.get_attribute('href')
+                else:
+                    location = None
+                    print("No location found.")
             
+                location_name_elements = sb.find_elements("div[aria-label='Edit location']")
+                displayed_location_name_elements = [x for x in location_name_elements if x.is_displayed()]
+                if displayed_location_name_elements:
+                    location_name_element = displayed_location_name_elements[0]
+                    location_name = location_name_element.text
+                else:
+                    location_name = None
+                    print("No location name found.")
+
                 sb.send_keys("html", Keys.SHIFT + "d")
                 sleep(5)
                 hashInt = 0
@@ -100,8 +159,8 @@ def my_sb(sb=None):
                 os.remove(latest_file)
 
                 cursor.execute(
-                    "INSERT INTO hashes(hash, url, preview_url, label, filename, size, filesize) VALUES (%s, %s, %s, %s, %s, %s, %s)",
-                    (hashInt, url, preview_url, label, filename, size, filesize)
+                    "INSERT INTO hashes(hash, url, preview_url, label, filename, size, filesize, camera_name, aperture, exposure, focal_length, location, location_name) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                    (hashInt, url, preview_url, label, filename, size, filesize, camera_name, aperture, exposure, focal_length, location, location_name)
                 )
                 conn.commit()
                 print(f"added image to database")
