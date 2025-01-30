@@ -136,13 +136,18 @@ def my_sb(sb=None):
                     print("No location name found.")
 
                 sb.send_keys("html", Keys.SHIFT + "d")
-                sleep(5)
-                hashInt = 0
+                sleep(6)
+                
                 
                 download_path = sb.get_downloads_folder()
 
                 os.listdir(download_path)
                 latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
+                while latest_file.endswith('.crdownload'):
+                    sleep(1)
+                    latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
+               
+                
                 if latest_file.endswith('.zip'):
                     with zipfile.ZipFile(latest_file, 'r') as zip_ref:
                         zip_ref.extractall(download_path)
@@ -151,7 +156,6 @@ def my_sb(sb=None):
                 if latest_file.endswith('.mov'):
                     os.remove(latest_file)
                     latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
-
                 img = Image.open(latest_file)
                 imgHash = str(imagehash.phash(img))
                 hashInt = twos_complement(imgHash, 64) #convert from hexadecimal to 64 bit signed integer
