@@ -90,7 +90,7 @@ def my_sb(sb=None):
                     camera_name = None
                     print("No camera name found.")
 
-                aperture_elements = sb.find_elements("div[aria-label^='Aperture:']")
+                aperture_elements = sb.find_elements("span[aria-label^='Aperture:']")
                 displayed_aperture_elements = [x for x in aperture_elements if x.is_displayed()]
                 if displayed_aperture_elements:
                     aperture_element = displayed_aperture_elements[0]
@@ -99,7 +99,7 @@ def my_sb(sb=None):
                     aperture = None
                     print("No aperture found.")
 
-                exposure_elements = sb.find_elements("div[aria-label^='Exposure time:']")
+                exposure_elements = sb.find_elements("span[aria-label^='Exposure time:']")
                 displayed_exposure_elements = [x for x in exposure_elements if x.is_displayed()]
                 if displayed_exposure_elements:
                     exposure_element = displayed_exposure_elements[0]
@@ -108,7 +108,7 @@ def my_sb(sb=None):
                     exposure = None
                     print("No exposure time found.")
 
-                focal_length_elements = sb.find_elements("div[aria-label^='Focal length:']")
+                focal_length_elements = sb.find_elements("span[aria-label^='Focal length:']")
                 displayed_focal_length_elements = [x for x in focal_length_elements if x.is_displayed()]
                 if displayed_focal_length_elements:
                     focal_length_element = displayed_focal_length_elements[0]
