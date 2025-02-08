@@ -58,7 +58,8 @@ def my_sb(sb=None, start=None):
     
     cursor = conn.cursor()
     print("Connection Successful to PostgreSQL")
-    for i in range(10000):
+    i=0
+    while True:
         print (i)
         sleep(5)
         url = sb.get_current_url()
@@ -194,6 +195,7 @@ def my_sb(sb=None, start=None):
                 print(f"added image to database")
                 # print(url, preview_url, label, filename, size, filesize)
         sb.send_keys("html", Keys.ARROW_RIGHT)
+        i+=1
 
     return context, sb, conn, cursor
 
