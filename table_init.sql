@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS hashes;
 CREATE TABLE hashes (
-	id SERIAL PRIMARY KEY,
-	hash bigint,
-	url text,
+    id SERIAL PRIMARY KEY,
+    hash bigint,
+    url text,
     preview_url text,
     label text,
     filename text,
@@ -13,7 +13,9 @@ CREATE TABLE hashes (
     exposure text, 
     focal_length text, 
     location text, 
-    location_name text
+    location_name text,
+    timezone text,          -- Added timezone column
+    timestamp timestamp with time zone    -- Added timestamp column
 );
 CREATE EXTENSION bktree;
 CREATE INDEX index ON hashes USING spgist (hash bktree_ops);

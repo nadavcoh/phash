@@ -11,6 +11,8 @@ import json
 import zipfile
 import time
 import argparse
+from datetime import datetime
+import pytz
 
 register_heif_opener()
 
@@ -76,6 +78,7 @@ def my_sb(sb=None, start=None):
                 preview_element = displayed_preview_elements[0]
                 preview_url = preview_element.get_attribute('src')
                 label = preview_element.get_attribute('aria-label')
+                # sample label = "Photo – Portrait – 16 Nov 2024, 10:28:33"
 
                 filename_elements = sb.find_elements("div[aria-label^='Filename']")
                 filename_element = [x for x in filename_elements if x.is_displayed()][0]
@@ -148,6 +151,16 @@ def my_sb(sb=None, start=None):
                     location_name = None
                     print("No location name found.")
 
+                timezone_elements = sb.find_elements("span[aria-label^='GMT']")
+                displayed_timezone_elements = [x for x in timezone_elements if x.is_displayed()]
+                if displayed_timezone_elements:
+                    timezone_element = displayed_timezone_elements[0]
+                    timezone = timezone_element.text
+                else:
+                    timezone = None
+                    print("No timezone found.")
+                # sample timezone = "GMT+02:00"
+
                 sb.send_keys("html", Keys.SHIFT + "d")
                 sleep(6)
                                
@@ -187,9 +200,13 @@ def my_sb(sb=None, start=None):
                         time.sleep(1)
                     os.remove(latest_file)
 
+                label_parts = label.split(' – ')
+                date_str = label_parts[-1]
+                timestamp = date_str + timezone[3:]
+
                 cursor.execute(
-                    "INSERT INTO hashes(hash, url, preview_url, label, filename, size, filesize, camera_name, aperture, exposure, focal_length, location, location_name) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
-                    (hashInt, url, preview_url, label, filename, size, filesize, camera_name, aperture, exposure, focal_length, location, location_name)
+                    "INSERT INTO hashes(hash, url, preview_url, label, filename, size, filesize, camera_name, aperture, exposure, focal_length, location, location_name, timezone, timestamp) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                    (hashInt, url, preview_url, label, filename, size, filesize, camera_name, aperture, exposure, focal_length, location, location_name, timezone, timestamp)
                 )
                 conn.commit()
                 print(f"added image to database")

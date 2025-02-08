@@ -4,3 +4,4 @@ pillow
 pillow-heif
 imagehash
 flask
+pytz
