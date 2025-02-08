@@ -9,6 +9,7 @@ from pillow_heif import register_heif_opener
 import imagehash
 import json
 import zipfile
+import time
 
 register_heif_opener()
 
@@ -19,6 +20,13 @@ def twos_complement(hexstr, bits):
         if value & (1 << (bits-1)):
             value -= 1 << bits
         return value
+
+def is_file_in_use(filepath):
+    try:
+        os.rename(filepath, filepath)
+        return False
+    except OSError:
+        return True
 
 def my_sb(sb=None):
     context = None
@@ -151,15 +159,21 @@ def my_sb(sb=None):
                 if latest_file.endswith('.zip'):
                     with zipfile.ZipFile(latest_file, 'r') as zip_ref:
                         zip_ref.extractall(download_path)
+                    while is_file_in_use(latest_file):
+                        time.sleep(1)
                     os.remove(latest_file)
                     latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
                 if latest_file.endswith('.mov'):
+                    while is_file_in_use(latest_file):
+                        time.sleep(1)
                     os.remove(latest_file)
                     latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
                 img = Image.open(latest_file)
                 imgHash = str(imagehash.phash(img))
                 hashInt = twos_complement(imgHash, 64) #convert from hexadecimal to 64 bit signed integer
 
+                while is_file_in_use(latest_file):
+                    time.sleep(1)
                 os.remove(latest_file)
 
                 cursor.execute(
