@@ -13,6 +13,7 @@
 /downloaded_files
 /example.json
 /config.json
-imageToSearch.jpg
-hash_rows.csv
-urls.csv
+/imageToSearch.jpg
+/hash_rows.csv
+/urls.csv
+/downloaded_photos
