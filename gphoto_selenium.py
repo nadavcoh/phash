@@ -175,6 +175,12 @@ def my_sb(sb=None):
                 while is_file_in_use(latest_file):
                     time.sleep(1)
                 os.remove(latest_file)
+                
+                latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
+                if latest_file.endswith('.mov'):
+                    while is_file_in_use(latest_file):
+                        time.sleep(1)
+                    os.remove(latest_file)
 
                 cursor.execute(
                     "INSERT INTO hashes(hash, url, preview_url, label, filename, size, filesize, camera_name, aperture, exposure, focal_length, location, location_name) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
