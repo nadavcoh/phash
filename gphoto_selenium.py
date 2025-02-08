@@ -10,16 +10,17 @@ import imagehash
 import json
 import zipfile
 import time
+import argparse
 
 register_heif_opener()
 
 def twos_complement(hexstr, bits):
-        value = int(hexstr,16) #convert hexadecimal to integer
+    value = int(hexstr,16) #convert hexadecimal to integer
 
-		#convert from unsigned number to signed number with "bits" bits
-        if value & (1 << (bits-1)):
-            value -= 1 << bits
-        return value
+    #convert from unsigned number to signed number with "bits" bits
+    if value & (1 << (bits-1)):
+        value -= 1 << bits
+    return value
 
 def is_file_in_use(filepath):
     try:
@@ -28,7 +29,7 @@ def is_file_in_use(filepath):
     except OSError:
         return True
 
-def my_sb(sb=None):
+def my_sb(sb=None, start=None):
     context = None
     if not sb:
         context = SB(uc=True)
@@ -38,8 +39,11 @@ def my_sb(sb=None):
     # Wait for the user to complete all authentication steps
     input("Press Enter after completing authentication...")
     
-    sb.send_keys("html", Keys.ARROW_RIGHT)
-    sb.send_keys("html", Keys.ENTER)
+    if start is None:
+        sb.send_keys("html", Keys.ARROW_RIGHT)
+        sb.send_keys("html", Keys.ENTER)
+    else:
+        sb.open(start)
     sb.send_keys("html", "i")
     
     with open('config.json') as config_file:
@@ -145,8 +149,7 @@ def my_sb(sb=None):
 
                 sb.send_keys("html", Keys.SHIFT + "d")
                 sleep(6)
-                
-                
+                               
                 download_path = sb.get_downloads_folder()
 
                 os.listdir(download_path)
@@ -154,7 +157,6 @@ def my_sb(sb=None):
                 while latest_file.endswith('.crdownload'):
                     sleep(1)
                     latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
-               
                 
                 if latest_file.endswith('.zip'):
                     with zipfile.ZipFile(latest_file, 'r') as zip_ref:
@@ -193,7 +195,16 @@ def my_sb(sb=None):
 
     return context, sb, conn, cursor
 
-if __name__ == '__main__':
+def main():
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('--start', type=str, default=None, help='a URL for the start value')
+    args = parser.parse_args()
+
+    start = args.start
+
+    # Pass the start argument to my_sb
     with SB(uc=True) as sb:
-        context, sb, conn, cursor = my_sb(sb)
-    # context.__exit__(None, None, None)
+        context, sb, conn, cursor = my_sb(sb, start)
+
+if __name__ == "__main__":
+    main()
