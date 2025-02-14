@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from time import sleep
 
 import psycopg2
+import psycopg2.extras  # Import extras module
 import os
 from PIL import Image
 from pillow_heif import register_heif_opener
@@ -216,16 +217,46 @@ def my_sb(sb=None, start=None):
 
     return context, sb, conn, cursor
 
+def fetch_and_print_records():
+    with open('config.json') as config_file:
+        config = json.load(config_file)
+
+    conn = psycopg2.connect(
+        database=config["DB_NAME"],
+        user=config["DB_USER"],
+        password=config["DB_PASSWORD"],
+        host=config["DB_HOST"]
+    )
+    
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    print("Connection Successful to PostgreSQL")
+
+    # Fetch the record with the highest ID
+    cursor.execute("SELECT id, timestamp, url FROM hashes ORDER BY id DESC LIMIT 1")
+    highest_id_record = cursor.fetchone()
+    print(f"Record with highest ID: ID = {highest_id_record['id']}, Timestamp = {highest_id_record['timestamp']}, URL = {highest_id_record['url']}")
+
+    # Fetch the record with the oldest timestamp
+    cursor.execute("SELECT id, timestamp, url FROM hashes ORDER BY timestamp ASC, id DESC LIMIT 1")
+    oldest_timestamp_record = cursor.fetchone()
+    print(f"Record with oldest timestamp: ID = {oldest_timestamp_record['id']}, Timestamp = {oldest_timestamp_record['timestamp']}, URL = {oldest_timestamp_record['url']}")
+
+    cursor.close()
+    conn.close()
+
 def main():
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument('--start', type=str, default=None, help='a URL for the start value')
+    parser.add_argument('--fetch-records', action='store_true', help='fetch and print records from the database')
     args = parser.parse_args()
 
-    start = args.start
-
-    # Pass the start argument to my_sb
-    with SB(uc=True) as sb:
-        context, sb, conn, cursor = my_sb(sb, start)
+    if args.fetch_records:
+        fetch_and_print_records()
+    else:
+        start = args.start
+        # Pass the start argument to my_sb
+        with SB(uc=True) as sb:
+            context, sb, conn, cursor = my_sb(sb, start)
 
 if __name__ == "__main__":
     main()
