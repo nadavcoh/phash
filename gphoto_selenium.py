@@ -32,6 +32,33 @@ def is_file_in_use(filepath):
     except OSError:
         return True
 
+def get_start_url(option):
+    with open('config.json') as config_file:
+        config = json.load(config_file)
+
+    conn = psycopg2.connect(
+        database=config["DB_NAME"],
+        user=config["DB_USER"],
+        password=config["DB_PASSWORD"],
+        host=config["DB_HOST"]
+    )
+    
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    print("Connection Successful to PostgreSQL")
+
+    if option == "last":
+        cursor.execute("SELECT url FROM hashes ORDER BY id DESC LIMIT 1")
+    elif option == "oldest":
+        cursor.execute("SELECT url FROM hashes ORDER BY timestamp ASC, id DESC LIMIT 1")
+    else:
+        return None
+
+    record = cursor.fetchone()
+    cursor.close()
+    conn.close()
+
+    return record['url'] if record else None
+
 def my_sb(sb=None, start=None):
     context = None
     if not sb:
@@ -246,7 +273,7 @@ def fetch_and_print_records():
 
 def main():
     parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('--start', type=str, default=None, help='a URL for the start value')
+    parser.add_argument('--start', type=str, default=None, help='a URL for the start value or "oldest" or "last"')
     parser.add_argument('--fetch-records', action='store_true', help='fetch and print records from the database')
     args = parser.parse_args()
 
@@ -254,6 +281,8 @@ def main():
         fetch_and_print_records()
     else:
         start = args.start
+        if start in ["oldest", "last"]:
+            start = get_start_url(start)
         # Pass the start argument to my_sb
         with SB(uc=True) as sb:
             context, sb, conn, cursor = my_sb(sb, start)
