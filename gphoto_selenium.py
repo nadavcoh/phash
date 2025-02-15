@@ -14,6 +14,7 @@ import time
 import argparse
 from datetime import datetime
 import pytz
+import msvcrt
 
 register_heif_opener()
 
@@ -89,7 +90,8 @@ def my_sb(sb=None, start=None):
     cursor = conn.cursor()
     print("Connection Successful to PostgreSQL")
     i=0
-    while True:
+    flag = True
+    while flag:
         print (i)
         sleep(5)
         url = sb.get_current_url()
@@ -241,6 +243,9 @@ def my_sb(sb=None, start=None):
                 # print(url, preview_url, label, filename, size, filesize)
         sb.send_keys("html", Keys.ARROW_RIGHT)
         i+=1
+        if msvcrt.kbhit():
+            if msvcrt.getch() == b'q':
+                flag = False
 
     return context, sb, conn, cursor
 
