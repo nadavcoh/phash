@@ -11,11 +11,11 @@ def add_photos_to_album(urls, album_name):
 
         for url in urls:
             sb.open(url)
-            sb.click('div[aria-label="Select"]')
+            sb.click('div[aria-label="More options"]')
             time.sleep(2)
             sb.click('div[aria-label="Add to album"]')
             time.sleep(2)
-            sb.click(f'div[aria-label="{album_name}"]')
+            sb.click(f'span:contains("{album_name}")')
             time.sleep(2)
 
 if __name__ == "__main__":
@@ -25,5 +25,5 @@ if __name__ == "__main__":
         for row in csv_reader:
             urls.append(row[0])
 
-    album_name = input("Enter the album name: ")
+    album_name = "Family Day 2025"
     add_photos_to_album(urls, album_name)
