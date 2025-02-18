@@ -19,9 +19,9 @@ def write_records_to_csv(records, filename='records_without_timestamp.csv'):
 def write_updated_records_to_csv(records, filename='updated_records.csv'):
     with open(filename, mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(['id', 'timestamp'])
+        writer.writerow(['id', 'timezone', 'label', 'timestamp'])
         for record in records:
-            writer.writerow([record['id'], record['timestamp']])
+            writer.writerow([record['id'], record['timezone'], record['label'], record['timestamp']])
     print(f"Updated records written to {filename}")
 
 def update_timestamp_for_records():
@@ -68,10 +68,12 @@ def update_timestamp_for_records():
             (timestamp, record_id)
         )
         conn.commit()
-        print(f"Updated record ID {record_id} with timestamp {timestamp}.")
+        print(f"Updated record ID {record_id} with timezone {timezone}, label {label}, and timestamp {timestamp}.")
 
         updated_records.append({
             'id': record_id,
+            'timezone': timezone,
+            'label': label,
             'timestamp': timestamp
         })
 
