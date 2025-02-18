@@ -86,7 +86,7 @@ def update_timezone_for_records():
                         (timezone, timestamp, record_id)
                     )
                     conn.commit()
-                    print(f"Updated record ID {record_id} with timezone {timezone} and timestamp {timestamp}.")
+                    print(f"Updated record ID {record_id} with timezone {timezone}, label {label}, and timestamp {timestamp}.")
 
                     updated_records.append({
                         'id': record_id,
