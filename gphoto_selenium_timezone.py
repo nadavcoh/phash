@@ -19,6 +19,14 @@ def write_records_to_csv(records, filename='records_without_timezone.csv'):
             writer.writerow([record['id'], record['url']])
     print(f"Records written to {filename}")
 
+def write_updated_records_to_csv(records, filename='updated_records.csv'):
+    with open(filename, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(['id', 'timezone', 'label', 'timestamp'])
+        for record in records:
+            writer.writerow([record['id'], record['timezone'], record['label'], record['timestamp']])
+    print(f"Updated records written to {filename}")
+
 def update_timezone_for_records():
     with open('config.json') as config_file:
         config = json.load(config_file)
@@ -44,6 +52,8 @@ def update_timezone_for_records():
 
     # Write records to CSV before lookup
     write_records_to_csv(records)
+
+    updated_records = []
 
     with SB(uc=True) as sb:
         login(sb)
@@ -78,8 +88,18 @@ def update_timezone_for_records():
                     conn.commit()
                     print(f"Updated record ID {record_id} with timezone {timezone} and timestamp {timestamp}.")
 
+                    updated_records.append({
+                        'id': record_id,
+                        'timezone': timezone,
+                        'label': label,
+                        'timestamp': timestamp
+                    })
+
     cursor.close()
     conn.close()
+
+    # Write updated records to CSV
+    write_updated_records_to_csv(updated_records)
 
 def main():
     parser = argparse.ArgumentParser(description='Update timezone for records without timezone.')
