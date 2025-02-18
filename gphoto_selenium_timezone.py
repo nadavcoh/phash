@@ -54,15 +54,17 @@ def update_timezone_for_records():
     write_records_to_csv(records)
 
     updated_records = []
-
+    info_open = False
     with SB(uc=True) as sb:
         login(sb)
         for record in records:
             record_id = record['id']
             url = record['url']
             sb.open(url)
+            if not info_open:
+                sb.send_keys("html", "i")
+                info_open = True
             sleep(5)  # Wait for the page to load
-
             timezone_elements = sb.find_elements("span[aria-label^='GMT']")
             displayed_timezone_elements = [x for x in timezone_elements if x.is_displayed()]
             if displayed_timezone_elements:
@@ -73,7 +75,7 @@ def update_timezone_for_records():
                 print(f"No timezone found for record ID {record_id}.")
 
             if timezone:
-                label_elements = sb.find_elements("div[aria-label^='Photo']")
+                label_elements = sb.find_elements("img[aria-label^='Photo']")
                 displayed_label_elements = [x for x in label_elements if x.is_displayed()]
                 if displayed_label_elements:
                     label_element = displayed_label_elements[0]
@@ -94,6 +96,8 @@ def update_timezone_for_records():
                         'label': label,
                         'timestamp': timestamp
                     })
+                else:
+                    print(f"No label found for record ID {record_id}.")
 
     cursor.close()
     conn.close()
