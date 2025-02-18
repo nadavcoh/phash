@@ -54,32 +54,30 @@ def update_timestamp_for_records():
     write_records_to_csv(records)
 
     updated_records = []
-    with SB(uc=True) as sb:
-        login(sb)
-        for record in records:
-            record_id = record['id']
-            url = record['url']
-            timezone = record['timezone']
-            label = record['label']
-            
-            if not timezone or not label:
-                print(f"Missing timezone or label for record ID {record_id}.")
-                continue
+    for record in records:
+        record_id = record['id']
+        url = record['url']
+        timezone = record['timezone']
+        label = record['label']
+        
+        if not timezone or not label:
+            print(f"Missing timezone or label for record ID {record_id}.")
+            continue
 
-            date_str = label.split(' – ')[-1]
-            timestamp = date_str + timezone[3:]
+        date_str = label.split(' – ')[-1]
+        timestamp = date_str + timezone[3:]
 
-            cursor.execute(
-                "UPDATE hashes SET timestamp = %s WHERE id = %s",
-                (timestamp, record_id)
-            )
-            conn.commit()
-            print(f"Updated record ID {record_id} with timestamp {timestamp}.")
+        cursor.execute(
+            "UPDATE hashes SET timestamp = %s WHERE id = %s",
+            (timestamp, record_id)
+        )
+        conn.commit()
+        print(f"Updated record ID {record_id} with timestamp {timestamp}.")
 
-            updated_records.append({
-                'id': record_id,
-                'timestamp': timestamp
-            })
+        updated_records.append({
+            'id': record_id,
+            'timestamp': timestamp
+        })
 
     cursor.close()
     conn.close()
