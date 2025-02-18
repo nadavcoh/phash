@@ -6,6 +6,10 @@ import psycopg2.extras
 import json
 import argparse
 
+def login(sb):
+    sb.open("https://photos.google.com/login")
+    input("Press Enter after completing authentication...")
+
 def update_timezone_for_records():
     with open('config.json') as config_file:
         config = json.load(config_file)
@@ -30,6 +34,7 @@ def update_timezone_for_records():
         return
 
     with SB(uc=True) as sb:
+        login(sb)
         for record in records:
             record_id = record['id']
             url = record['url']
