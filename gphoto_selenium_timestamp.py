@@ -1,6 +1,3 @@
-from seleniumbase import SB
-from selenium.webdriver.common.keys import Keys
-from time import sleep
 import psycopg2
 import psycopg2.extras
 import json
@@ -14,9 +11,9 @@ def login(sb):
 def write_records_to_csv(records, filename='records_without_timestamp.csv'):
     with open(filename, mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(['id', 'url', 'timezone', 'label'])
+        writer.writerow(['id', 'timezone', 'label'])
         for record in records:
-            writer.writerow([record['id'], record['url'], record['timezone'], record['label']])
+            writer.writerow([record['id'], record['timezone'], record['label']])
     print(f"Records written to {filename}")
 
 def write_updated_records_to_csv(records, filename='updated_records.csv'):
@@ -41,7 +38,7 @@ def update_timestamp_for_records():
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     print("Connection Successful to PostgreSQL")
 
-    cursor.execute("SELECT id, url, timezone, label FROM hashes WHERE timestamp IS NULL")
+    cursor.execute("SELECT id, timezone, label FROM hashes WHERE timestamp IS NULL")
     records = cursor.fetchall()
 
     if not records:
@@ -56,7 +53,6 @@ def update_timestamp_for_records():
     updated_records = []
     for record in records:
         record_id = record['id']
-        url = record['url']
         timezone = record['timezone']
         label = record['label']
         
