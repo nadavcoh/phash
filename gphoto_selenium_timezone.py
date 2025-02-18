@@ -5,10 +5,19 @@ import psycopg2
 import psycopg2.extras
 import json
 import argparse
+import csv
 
 def login(sb):
     sb.open("https://photos.google.com/login")
     input("Press Enter after completing authentication...")
+
+def write_records_to_csv(records, filename='records_without_timezone.csv'):
+    with open(filename, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(['id', 'url'])
+        for record in records:
+            writer.writerow([record['id'], record['url']])
+    print(f"Records written to {filename}")
 
 def update_timezone_for_records():
     with open('config.json') as config_file:
@@ -32,6 +41,9 @@ def update_timezone_for_records():
         cursor.close()
         conn.close()
         return
+
+    # Write records to CSV before lookup
+    write_records_to_csv(records)
 
     with SB(uc=True) as sb:
         login(sb)
