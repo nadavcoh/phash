@@ -48,7 +48,7 @@ def update_timestamp_for_records():
 
     i = 0
     n = len(records)
-
+    print(f"Found {n} records without timestamp.")
     updated_records = []
     for record in records:
         print(f"Processing record {i+1}/{n}...")
