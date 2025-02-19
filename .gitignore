@@ -19,6 +19,5 @@
 /downloaded_photos
 error.txt
 todo.md
-records_without_timezone.csv
-records_without_timezone1.csv
-updated_records.csv
+records_without_timezone*.csv
+updated_records*.csv

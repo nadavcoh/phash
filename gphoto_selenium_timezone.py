@@ -49,15 +49,20 @@ def update_timezone_for_records():
         cursor.close()
         conn.close()
         return
+    n = len(records)
+    print(f"Found {n} records without timezone.")
 
     # Write records to CSV before lookup
     write_records_to_csv(records)
 
     updated_records = []
+    i = 0
     info_open = False
     with SB(uc=True) as sb:
         login(sb)
         for record in records:
+            print(f"Processing record {i+1}/{n}...")
+            i += 1
             record_id = record['id']
             url = record['url']
             sb.open(url)
