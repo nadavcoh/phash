@@ -4,10 +4,6 @@ import json
 import argparse
 import csv
 
-def login(sb):
-    sb.open("https://photos.google.com/login")
-    input("Press Enter after completing authentication...")
-
 def write_records_to_csv(records, filename='records_without_timestamp.csv'):
     with open(filename, mode='w', newline='') as file:
         writer = csv.writer(file)
@@ -38,7 +34,7 @@ def update_timestamp_for_records():
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     print("Connection Successful to PostgreSQL")
 
-    cursor.execute("SELECT id, timezone, label FROM hashes WHERE timestamp IS NULL")
+    cursor.execute("SELECT id, timezone, label FROM hashes WHERE timestamp IS NULL and timezone is not null")
     records = cursor.fetchall()
 
     if not records:
@@ -50,8 +46,13 @@ def update_timestamp_for_records():
     # Write records to CSV before lookup
     write_records_to_csv(records)
 
+    i = 0
+    n = len(records)
+
     updated_records = []
     for record in records:
+        print(f"Processing record {i+1}/{n}...")
+        i += 1
         record_id = record['id']
         timezone = record['timezone']
         label = record['label']
@@ -84,9 +85,6 @@ def update_timestamp_for_records():
     write_updated_records_to_csv(updated_records)
 
 def main():
-    parser = argparse.ArgumentParser(description='Update timestamp for records without timestamp.')
-    args = parser.parse_args()
-
     update_timestamp_for_records()
 
 if __name__ == "__main__":
