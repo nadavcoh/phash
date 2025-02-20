@@ -206,6 +206,8 @@ def my_sb(sb=None, start=None):
                     latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
                 
                 if latest_file.endswith('.zip'):
+                    if os.path.getsize(latest_file) == 0:
+                        input(f"Empty zip file. Press Enter to continue...\n{latest_file}")
                     with zipfile.ZipFile(latest_file, 'r') as zip_ref:
                         zip_ref.extractall(download_path)
                     while is_file_in_use(latest_file):
@@ -217,6 +219,8 @@ def my_sb(sb=None, start=None):
                         time.sleep(1)
                     os.remove(latest_file)
                     latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
+                if os.path.getsize(latest_file) == 0:
+                    input(f"Empty file. Press Enter to continue...\n{latest_file}")
                 img = Image.open(latest_file)
                 imgHash = str(imagehash.phash(img))
                 img.close()
