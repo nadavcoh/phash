@@ -15,6 +15,7 @@ import argparse
 from datetime import datetime
 import pytz
 import msvcrt
+#from videohash import VideoHash
 
 register_heif_opener()
 
@@ -46,6 +47,7 @@ def get_start_url(option):
     
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     print("Connection Successful to PostgreSQL")
+    cursor.execute("SET TIME ZONE 'Asia/Jerusalem';")
 
     if option == "last":
         cursor.execute("SELECT url FROM hashes ORDER BY id DESC LIMIT 1")
@@ -89,6 +91,7 @@ def my_sb(sb=None, start=None):
     
     cursor = conn.cursor()
     print("Connection Successful to PostgreSQL")
+    cursor.execute("SET TIME ZONE 'Asia/Jerusalem';")
     i=0
     flag = True
     while flag:
@@ -262,7 +265,7 @@ def fetch_and_print_records():
     
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     print("Connection Successful to PostgreSQL")
-
+    cursor.execute("SET TIME ZONE 'Asia/Jerusalem';")
     # Fetch the record with the highest ID
     cursor.execute("SELECT id, timestamp, url FROM hashes ORDER BY id DESC LIMIT 1")
     highest_id_record = cursor.fetchone()
