@@ -15,7 +15,7 @@ import argparse
 from datetime import datetime
 import pytz
 import msvcrt
-#from videohash import VideoHash
+from videohash import VideoHash
 
 register_heif_opener()
 
@@ -223,8 +223,9 @@ def my_sb(sb=None, start=None):
                         imgHash = str(imagehash.phash(img))
                         img.close()
                     case '.mov' | '.mp4':
-                        #video_hash = VideoHash(filepath)
-                        #imgHash = video_hash.get_hash()
+                        video_hash = VideoHash(filepath)
+                        imgHash = video_hash.hash_hex
+                        video_hash.delete_storage_path()
                         input(f"Unsupported file type. Press Enter to continue...\n{filename}")
                     case _:
                         input(f"Unsupported file type. Press Enter to continue...\n{filename}")
