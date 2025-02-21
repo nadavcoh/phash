@@ -5,3 +5,4 @@ pillow-heif
 imagehash
 flask
 pytz
+videohash

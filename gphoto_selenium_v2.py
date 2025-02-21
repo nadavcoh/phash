@@ -198,44 +198,42 @@ def my_sb(sb=None, start=None):
                 sleep(6)
                                
                 download_path = sb.get_downloads_folder()
-
-                while not os.path.isfile(os.path.join(download_path, filename)):
+                filepath = os.path.join(download_path, filename)
+                while not os.path.isfile(filepath):
                     latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
                     while latest_file.endswith('.crdownload'):
                         sleep(1)
                         latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
-                    
-                if latest_file.endswith('.zip'):
-                    if os.path.getsize(latest_file) == 0:
-                        input(f"Empty zip file. Press Enter to continue...\n{latest_file}")
-                    with zipfile.ZipFile(latest_file, 'r') as zip_ref:
-                        zip_ref.extractall(download_path)
-                    while is_file_in_use(latest_file):
-                        time.sleep(1)
-                    os.remove(latest_file)
-                    latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
-                if latest_file.endswith('.mov'):
-                    while is_file_in_use(latest_file):
-                        time.sleep(1)
-                    os.remove(latest_file)
-                    latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
-                if os.path.getsize(latest_file) == 0:
+                    # 
+                    if latest_file.endswith('.zip'):
+                        if os.path.getsize(latest_file) == 0:
+                            input(f"Empty zip file. Press Enter to continue...\n{latest_file}")
+                        with zipfile.ZipFile(latest_file, 'r') as zip_ref:
+                            zip_ref.extract(filename, download_path)
+                        while is_file_in_use(latest_file):
+                            time.sleep(1)
+                            print("file in use")
+                        os.remove(latest_file)      
+                
+                if os.path.getsize(filepath) == 0:
                     input(f"Empty file. Press Enter to continue...\n{latest_file}")
-                img = Image.open(latest_file)
-                imgHash = str(imagehash.phash(img))
-                img.close()
+                match (os.path.splitext(filename)[1].lower()):
+                    case '.gif' | '.heic' | '.jpeg' | '.jpg' | '.png' | '.webp':
+                        img = Image.open(filepath)
+                        imgHash = str(imagehash.phash(img))
+                        img.close()
+                    case '.mov' | '.mp4':
+                        #video_hash = VideoHash(filepath)
+                        #imgHash = video_hash.get_hash()
+                        input(f"Unsupported file type. Press Enter to continue...\n{filename}")
+                    case _:
+                        input(f"Unsupported file type. Press Enter to continue...\n{filename}")
                 hashInt = twos_complement(imgHash, 64) #convert from hexadecimal to 64 bit signed integer
 
-                while is_file_in_use(latest_file):
+                while is_file_in_use(filepath):
                     time.sleep(1)
                     print("file in use")
-                os.remove(latest_file)
-                
-                latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
-                if latest_file.endswith('.mov'):
-                    while is_file_in_use(latest_file):
-                        time.sleep(1)
-                    os.remove(latest_file)
+                os.remove(filepath)
 
                 label_parts = label.split(' – ')
                 date_str = label_parts[-1]
