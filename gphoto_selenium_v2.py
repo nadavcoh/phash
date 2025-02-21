@@ -204,7 +204,6 @@ def my_sb(sb=None, start=None):
                     while latest_file.endswith('.crdownload'):
                         sleep(1)
                         latest_file = max([os.path.join(download_path, f) for f in os.listdir(download_path)], key=os.path.getctime)
-                    # 
                     if latest_file.endswith('.zip'):
                         if os.path.getsize(latest_file) == 0:
                             input(f"Empty zip file. Press Enter to continue...\n{latest_file}")
@@ -223,10 +222,9 @@ def my_sb(sb=None, start=None):
                         imgHash = str(imagehash.phash(img))
                         img.close()
                     case '.mov' | '.mp4':
-                        video_hash = VideoHash(filepath)
+                        video_hash = str(VideoHash(filepath))
                         imgHash = video_hash.hash_hex
                         video_hash.delete_storage_path()
-                        input(f"Unsupported file type. Press Enter to continue...\n{filename}")
                     case _:
                         input(f"Unsupported file type. Press Enter to continue...\n{filename}")
                 hashInt = twos_complement(imgHash, 64) #convert from hexadecimal to 64 bit signed integer
