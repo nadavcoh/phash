@@ -103,10 +103,10 @@ def my_sb(sb=None, start=None):
         if cursor.fetchone():
             print("URL already exists in the database.")
         else:
-            preview_elements = sb.find_elements("img[aria-label^='Photo']")
+            preview_elements = sb.find_elements("img[aria-label^='Photo'], img[aria-label^='Video']")
             displayed_preview_elements = [x for x in preview_elements if x.is_displayed()]
             if not displayed_preview_elements:
-                print("No image to process.")
+                input(f"No image to process.\n{url}")
             else:
                 preview_element = displayed_preview_elements[0]
                 preview_url = preview_element.get_attribute('src')
@@ -208,7 +208,10 @@ def my_sb(sb=None, start=None):
                         if os.path.getsize(latest_file) == 0:
                             input(f"Empty zip file. Press Enter to continue...\n{latest_file}")
                         with zipfile.ZipFile(latest_file, 'r') as zip_ref:
-                            zip_ref.extract(filename, download_path)
+                            for member in zip_ref.namelist():
+                                if member.lower() == filename.lower():
+                                    zip_ref.extract(member, download_path)
+                                    break
                         while is_file_in_use(latest_file):
                             time.sleep(1)
                             print("file in use")
